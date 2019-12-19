@@ -37,9 +37,13 @@ public class Pret implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "topoPret")
 	private Topo topo;
+	
+	
+	/*
 	public Pret() {
 		super();
 	}
+	*/
 	public Pret(String emprunteur, String proprietaire, String nomDuTopo,
 			@NotNull @Future(message = "Cette date est passée.") Date debutPret,
 			@NotNull @Future(message = "Cette date est passée.") Date finPret, String statut, Topo topo) {
@@ -52,6 +56,8 @@ public class Pret implements Serializable {
 		this.statut = statut;
 		this.topo = topo;
 	}
+	
+	
 	public Integer getIdPret() {
 		return IdPret;
 	}
