@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ConfirmEnregistrement</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/LoginStylesheet.css"
+          th:href="@{css/LoginStylesheet.css}"/>
+
+</head>
+
+<body>
+<h1>L'ESCALADE</h1>
+<div class="box">
+    <h2>S'enregistrer</h2>
+    <div class="panel-heading">Vous êtes enregistré!!</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Pseudo :</label>
+            <label th:text="${user.username}"></label>
+        </div>
+        <div class="form-group">
+            <label>Mot de passe :</label>
+            <label th:text="${user.password}"></label>
+        </div>
+        <a class="pull-right" th:href="@{/login}"><Strong>Login</Strong></a>
+    </div>
+</div>
+</body>
+</html>

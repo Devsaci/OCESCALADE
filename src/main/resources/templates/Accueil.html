@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+	
+	
+<head>
+<meta charset="UTF-8" />
+<title>Accueil</title>
+</head>
+
+
+<body>
+	<div layout:fragment="content">
+
+		<section id="Accueil">
+			<div class="container">
+				<h2>Accueil</h2>
+
+				<div class="row">
+					<div class="col-md-10">
+
+						<h4>
+							<strong>Escalade</strong> Notre site internet vous permettra
+							d’apprécier en partie notre volume d’activité et notre actualité.
+							Pour autant, c’est en nous rejoignant dans nos clubs que vous
+							pourrez réellement mesurer notre engouement pour les activités de
+							montagne et d’escalade.
+						</h4>
+
+						<ul>
+							<li><h4>Consulter nos Spots</h4></li>
+
+							<li><h4>Créer de nouveaux Spots</h4></li>
+
+							<li><h4>Ajouter des infos aux Spots existants</h4></li>
+
+							<li><h4>Prêter ou faites vous prêter des Topos</h4></li>
+
+							<li><h4>Commenter et partager vos sensations sur les
+									différents Spots</h4></li>
+						</ul>
+
+					</div>
+
+					<div class="col-md-10">
+						<p>
+							Voici une photo que j'ai prise lors de mes dernières vacances à
+							la montagne :<br /> <br> <img
+								th:src="@{/images/ocescalademini.jpg}" id="imageAccueil"
+								alt="grimpeur soleil levant"
+								title="C'est beau les Alpes quand même !" />
+						</p>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+</body>
+</html>
+
+
+<!--  th:href="@{/images/ocescalade.PNG}" -->

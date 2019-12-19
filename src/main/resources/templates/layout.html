@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">      
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
+          th:href="@{css/MyStylesheet.css}"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/Accueil}"><strong>ESCALADE</strong></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+                    <li><a  href="#">Ou Grimper?</a></li>
+                    <li><a  href="#">New Spot</a></li>
+                    <li><a  href="#">Trouver un Topo</a></li>
+                    <li><a  href="#">Votre Profil</a></li>
+                    <li><a  href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<section layout:fragment="content">
+</section>
+
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <h5><b>ESCALADE</b>  Adresse : 25 Rue duCocher
+                80 000  -  Mail : ocescalade@gmail.com  -  Tel : ........ </h5>
+        </div>
+    </nav>
+</footer>
+
+
+
+</body>
+
+</html>
+
+

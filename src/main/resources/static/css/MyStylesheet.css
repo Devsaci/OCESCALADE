@@ -1,0 +1,75 @@
+body{
+    /*background-image: url("/images/ap-base.jpg") ;*/
+    font-family:arial;
+}
+
+p{
+    margin-bottom: 20px;
+}
+
+h4,h2{
+    text-align: left;
+    opacity:0.8;
+}
+
+h5{
+    text-align: center;
+}
+
+section{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+@media (min-width:768px) {
+
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+#profCreaTopo{
+    margin-top: 20px;
+}
+
+#Accueil{
+    height:400px;
+}
+
+#Grimpe{
+    margin-bottom: 80px;
+}
+
+#listeSite{
+    text-align: center;
+    margin: 20px;
+}
+
+#imageAccueil{
+    float: right;
+}
+
+.red{
+    color: red;
+}
+
+#affTopo{
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#btntopos{
+    margin-bottom: 20px;
+}
+
+#lppe{
+    margin-bottom: 20px;
+}
+
+#deta{
+    margin-bottom: 20px;
+}
+
+#deto{
+    margin-bottom: 20px;
+}
