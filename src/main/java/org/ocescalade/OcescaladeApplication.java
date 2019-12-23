@@ -18,6 +18,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class OcescaladeApplication implements CommandLineRunner {
+	
+	/*
+	
 	@Autowired
 	private SpotRepository spotRepository;
 	@Autowired
@@ -29,13 +32,15 @@ public class OcescaladeApplication implements CommandLineRunner {
 	@Autowired
 	private TopoRepository topoRepository;
 
+	*/
+	
 	public static void main(String[] args) {
 		SpringApplication.run(OcescaladeApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-
+/*
 		Spot s1 = spotRepository.save(new Spot("EVEREST", "L’Everest est le plus haut sommet du globe, avec "
 				+ "un pic à 8848 mètres d’altitude. Il est situé sur "
 				+ "la frontière entre la zone de Sagarmatha, au Népal, "
@@ -90,11 +95,11 @@ public class OcescaladeApplication implements CommandLineRunner {
 	        
 	        
 	        
-		User u1 = userRepository.save(new User("Ahmed", "1111", "ADMIN", true));
-		User u2 = userRepository.save(new User("Moussa", "1112", "USER", true));
-		User u3 = userRepository.save(new User("Issa", "1113", "USER", true));
-		User u4 = userRepository.save(new User("Ibrahim", "1114", "USER", true));
-		User u5 = userRepository.save(new User("Houd", "1115", "USER", true));
+		User u1 = userRepository.save(new User("Ahmed", "1234", "ADMIN", true));
+		User u2 = userRepository.save(new User("Moussa", "1233", "USER", true));
+		User u3 = userRepository.save(new User("Issa", "1232", "USER", true));
+		User u4 = userRepository.save(new User("Ibrahim", "1231", "USER", true));
+		User u5 = userRepository.save(new User("Houd", "1230", "USER", true));
 		
 		
 			
@@ -117,6 +122,8 @@ public class OcescaladeApplication implements CommandLineRunner {
 				"Sur le pic d'un autre pic des plus escarpés, est planté Escalibur, l'épée"
 						+ " enchantée. Attention durant votre ascension car Gerdre la Sauvage veille.",
 				null, false, u1));
+	*/	
+		
 		
 	}
 
