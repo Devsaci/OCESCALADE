@@ -30,11 +30,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		BCryptPasswordEncoder bcpe = getBCPE();
 		System.out.println(bcpe.encode("1234"));
+		System.out.println(bcpe.encode("5555"));
+		
+		/*      */
+		
 		auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery("SELECT username as principal, password as credentials,"
 				+ " enabled FROM user WHERE username=?")
 		.authoritiesByUsernameQuery(
-				"SELECT username as principal," + " role as role FROM user WHERE username=?")
+				"SELECT username as principal, role as role FROM user WHERE username=?")
 		.rolePrefix("ROLE_")
 		.passwordEncoder(getBCPE())
 		;
@@ -43,20 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		/*
-		 http.formLogin().loginPage("/login");
-		 http.authorizeRequests().antMatchers("/").hasAnyRole("USER","ADMIN");
-		 */	
-		
+	protected void configure(HttpSecurity http) throws Exception {	
 		/* 
 		 super.configure(http);		 
-		  */	
+		*/	
+		
 		 http.formLogin().loginPage("/login");
 		 http.authorizeRequests().antMatchers("/").hasAnyRole("USER","ADMIN");
-		 http.authorizeRequests().antMatchers("/Accueil").hasAnyRole("USER","ADMIN");	
-		 
-		 		 
+		 http.authorizeRequests().antMatchers("/Accueil").hasAnyRole("USER","ADMIN");		 		 
 	}
 	
 	
