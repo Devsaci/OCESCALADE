@@ -17,7 +17,7 @@ public class User implements Serializable{
     @Size(min = 4, max = 50)
     private String username;
     @NotNull
-    @Size(min = 4, max = 50)
+    @Size(min = 4, max = 250)
     private String password;
     private String role;
     private Boolean enabled;

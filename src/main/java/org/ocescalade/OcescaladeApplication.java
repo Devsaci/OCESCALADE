@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OcescaladeApplication implements CommandLineRunner {
 	
-	/*
+	
 	
 	@Autowired
 	private SpotRepository spotRepository;
@@ -32,7 +32,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 	@Autowired
 	private TopoRepository topoRepository;
 
-	*/
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(OcescaladeApplication.class, args);
@@ -40,7 +40,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-/*
+
 		Spot s1 = spotRepository.save(new Spot("EVEREST", "L’Everest est le plus haut sommet du globe, avec "
 				+ "un pic à 8848 mètres d’altitude. Il est situé sur "
 				+ "la frontière entre la zone de Sagarmatha, au Népal, "
@@ -122,7 +122,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 				"Sur le pic d'un autre pic des plus escarpés, est planté Escalibur, l'épée"
 						+ " enchantée. Attention durant votre ascension car Gerdre la Sauvage veille.",
 				null, false, u1));
-	*/	
+		
 		
 		
 	}

@@ -9,6 +9,8 @@ import org.ocescalade.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,9 @@ public class AcceuilControlleur {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	/*   */
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@RequestMapping(value = "/Accueil")
 	public String Accueil() {
 		return "Accueil";
@@ -50,6 +53,7 @@ public class AcceuilControlleur {
 	public String saveUser(@Valid User user, BindingResult bindingResult, Model model) {
 		user.setRole("USER");
 		user.setEnabled(true);
+		user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 		if (bindingResult.hasErrors())
 			return "Enregistrement";
 		userRepository.save(user);
@@ -65,6 +69,5 @@ public class AcceuilControlleur {
 		}
 		return "redirect:/login?logout";
 	}
-	
-	
+
 }
