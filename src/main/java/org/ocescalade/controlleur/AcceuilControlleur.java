@@ -49,6 +49,8 @@ public class AcceuilControlleur {
 		return "Enregistrement";
 	}
 
+	
+	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public String saveUser(@Valid User user, BindingResult bindingResult, Model model) {
 		user.setRole("USER");

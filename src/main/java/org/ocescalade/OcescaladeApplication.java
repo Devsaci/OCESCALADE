@@ -93,15 +93,15 @@ public class OcescaladeApplication implements CommandLineRunner {
 		Voie voie62 = voieRepository.save(new Voie("Brulant", "Quand il souffle sur vous.", "Mortel", sct32));
 		
 	        
-	        
-	        
+	    
+      
 		User u1 = userRepository.save(new User("Ahmed", "1234", "ADMIN", true));
 		User u2 = userRepository.save(new User("Moussa", "1233", "USER", true));
 		User u3 = userRepository.save(new User("Issa", "1232", "USER", true));
 		User u4 = userRepository.save(new User("Ibrahim", "1231", "USER", true));
 		User u5 = userRepository.save(new User("Houd", "1230", "USER", true));
 		
-		
+	
 			
 			
 			

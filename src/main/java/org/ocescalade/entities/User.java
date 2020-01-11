@@ -24,9 +24,12 @@ public class User implements Serializable{
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Collection<Topo> topos;
     
+    
+    
 	public User() {
 		super();
 	}
+	
 	
 	public User(@NotNull @Size(min = 4, max = 50) String username, @NotNull @Size(min = 4, max = 50) String password,
 			String role, Boolean enabled) {
