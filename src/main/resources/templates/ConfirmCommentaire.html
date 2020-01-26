@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="UTF-8">
+<title>Enregistrement Spot</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
+</head>
+<div layout:fragment="content">
+	<section id="ConfirmCommentaire">
+		<div class="container">
+			<div class="col-md-6">
+				<div class="panel-default">
+					<div class="panel-heading">Vous avez créé un nouveau Comm!</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label>Titre :</label> <label th:text="${commentaire.titre}"></label>
+						</div>
+						<div class="form-group">
+							<label>Message :</label> <label th:text="${commentaire.message}"></label>
+						</div>
+						<div class="form-group">
+							<label>Auteur :</label> <label th:text="${commentaire.auteur}"></label>
+						</div>
+						<a th:href="@{/ListSpot}"><button
+					class="btn btn-default pull-right">retour</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<body>
+
+</body>
+</html>

@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="template1>
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>Spot</title>
-<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
-                                   th:href="@{css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
-          th:href="@{css/MyStylesheet.css}"/>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
 </head>
 <body>
-<div layout:fragment="content">
-<section id="listSpot">
-<div class="container">
-            <h2> Nos Spot</h2>
-            <h4> Recherche des Spots disponible par mots cles </h4>
-            <p></p>
-            <form th:action="@{listSpot}" method="get">
-                <label>Nom du Spot:</label>
-                <input type="text" name="motclef1" th:value="${motclef1}"/>
-                <label>Description du Spot:</label>
-                <input type="text" name="motclef2" th:value="${motclef2}"/>
-            <button class="btn btn-secondary">Chercher</button>
-            </form>
-        </div>
+	<div layout:fragment="content">
+		<section id="ListSpot">
+			<div class="container">
+			<div class="col-md-12">
+				<h2>Nous proposant les meilleurs Spot</h2>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cherche ton spot</div>
+					<div class="panel-body">
+
+						<form th:action="@{ListSpot}" method="get">
+							<label>Nom du Spot:</label> <input type="text" name="motclef1"
+								th:value="${motclef1}" /> <label>Description du Spot:</label> <input
+								type="text" name="motclef2" th:value="${motclef2}" />
+							<button class="btn btn-secondary">Chercher</button>
+						</form>
 
 
-</section>
-
+					</div>
+				</div>
+</div>
+			</div>
+					<div class="container">
+					<div class="col-md-6" th:each="s:${listSpot}">
+						
+<div class="panel panel-primary">
+<div class="panel-heading" th:text="${s.nomSpot}"></div>
+<div class="panel-body">						
+<div th:text="${s.descriptionSpot}"></div>																		
+<form th:action="@{Spot}" method="get">
+<input type="hidden" name="SpotID" th:value="${s.idSpot}" />
+<button type="submit" class="btn btn-secondary pull-right">Afficher le Site</button>
+</form>
+										
 
 </div>
+</div>
+						
+						
+						
+						
+						
 
+							
+							
+						</div>
+					</div>
+
+	
+
+
+
+
+
+
+
+
+		</section>
+	</div>
 </body>
 </html>

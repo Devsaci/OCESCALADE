@@ -1,0 +1,48 @@
+[33mcommit 6c6b77b0bc5cf34992c21ae19518ba69980281bf[m[33m ([m[1;36mHEAD -> [m[1;32mpasswordEncoder[m[33m)[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Sat Jan 11 23:46:25 2020 +0100
+
+    passwordEncider OK, Vue listSpot method RecherchSpot
+
+[33mcommit 9739136076ea9e01ae02099f17df1c5a10edb604[m[33m ([m[1;31morigin/passwordEncoder[m[33m, [m[1;32mmaster[m[33m)[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Sat Jan 4 20:17:43 2020 +0100
+
+    Ce servir du bean passwordEncoder() pourl'encrypter le password avant le .save
+
+[33mcommit d62f0db2e325779f3dcfbd72fe28d02d3755f8ba[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Mon Dec 30 10:57:13 2019 +0100
+
+    authotification MD5 MySQL Vs BCrypt
+
+[33mcommit 6115dd05cd9b5eaa955268bf507bf6e3b4834ae7[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Mon Dec 23 21:39:50 2019 +0100
+
+    security/SecurityConfig.java
+    Cnfiguration with Bcrypt
+
+[33mcommit a897f84d6ade66571d7585f86555732ac8162d5c[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Sat Dec 21 19:22:55 2019 +0100
+
+    add Class SecurityConfig
+
+[33mcommit 1d2e006e8ea2d6d28ff5e9d3696caa3b9f4ed992[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Sat Dec 21 19:08:09 2019 +0100
+
+    add dependency spring-boot-starter-security
+
+[33mcommit 0cdddccf0f33305fae5fb4a7d1e7ad508fcdf431[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Thu Dec 19 19:26:57 2019 +0100
+
+     modified:   src/main/java/org/ocescalade/entities/Pret.java
+
+[33mcommit c01b67e1fb805600d1d914750345afe967dfeefb[m
+Author: saci zakaria <sacideveloppeur@gmail.com>
+Date:   Thu Dec 19 18:52:00 2019 +0100
+
+    Gérer ses données avec une base de données MySQL. Les données de l’application web sont persistées dans la base de données

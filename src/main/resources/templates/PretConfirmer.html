@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Confirmation de demande de Prêt</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
+          th:href="@{css/MyStylesheet.css}"/>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <section id="ConfirmMess">
+        <div class="container">
+
+
+
+<h2> 
+<strong name="User" th:inline="text">
+[[${#httpServletRequest.remoteUser}]]</strong> 
+Votre demande de prêt a été envoyé  pour le topo 
+<strong name="nomTopo" th:text="${topo.getNomTopo()}"></strong> 
+</h2>
+<div></div>
+<div class="col-md-6">
+
+ <div class="panel panel-primary">
+<div class="panel-heading">Confirmation de Pret</div>
+<div class="panel-body">
+
+
+                        <div class="form-group">
+                            <label>Debut du prêt :</label>
+                            <label th:text="${pret.debutPret}"></label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Fin du prêt :</label>
+                            <label th:text="${pret.finPret}"></label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Etat de la demande :</label>
+                            <label th:text="${pret.statut}"></label>
+                        </div>
+
+<a th:href="@{/Topo}"><button class="btn btn-default pull-right">retour</button> </a>
+
+
+
+</div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

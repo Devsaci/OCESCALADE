@@ -23,6 +23,7 @@ public class AcceuilControlleur {
 
 	@Autowired
 	private UserRepository userRepository;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	

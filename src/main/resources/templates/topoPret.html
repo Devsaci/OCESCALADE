@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>pretTopo</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
+          th:href="@{css/MyStylesheet.css}"/>
+</head>
+
+<body>
+<div layout:fragment="content">
+<section id="topo">
+<div class="container">
+<h2> Emprunter un Topo </h2>
+
+<h4> 
+<strong name="User" th:inline="text">
+[[${#httpServletRequest.remoteUser}]]</strong> 
+tu peux valider ta demande de prêt pour le topo 
+<strong name="nomTopo" th:text="${topo.getNomTopo()}"></strong> 
+</h4>
+ <div class="col-md-8">
+ 
+ 
+  <div class="panel panel-primary">
+ <div id="demandePret" class="panel-heading" th:text="'DEMANDE DE PRET'"></div>
+<div class="panel-body">
+
+
+ <form th:action="@{savePret}" method="post">
+ <div class="form-group">
+ <label class="control-label">Debut du prêt :</label>
+ <input class="form-control" type="date" name="debutPret"  th:value="${pret.debutPret}"/>
+ <span class="red" th:errors="${pret.debutPret}"></span>
+ </div>
+  <div class="form-group">
+   <label class="control-label">Fin du prêt :</label>
+   <input class="form-control" type="date" name="finPret" th:value="${pret.finPret}"/>
+   <span class="red" th:errors="${pret.finPret}"></span>
+  </div>
+  <div>
+  <input type="hidden" name="idTopo" th:value="${topo.idTopo}"/>
+  <button type="submit" class="btn btn-default">Envoie Demande</button>
+  <a th:href="@{/Topo}"> <button type="button" class="btn btn-default pull-right">Retour</button></a> 
+  </div>
+ </form>
+
+
+
+
+</div>
+</div> 
+ </div>
+ 
+ 
+
+
+
+
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+
+ 
+
+</div>
+</section>
+</div>
+</body>
+</html>

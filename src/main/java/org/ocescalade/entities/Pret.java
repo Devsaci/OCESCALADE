@@ -39,11 +39,11 @@ public class Pret implements Serializable {
 	private Topo topo;
 	
 	
-	/*
+
 	public Pret() {
 		super();
 	}
-	*/
+
 	public Pret(String emprunteur, String proprietaire, String nomDuTopo,
 			@NotNull @Future(message = "Cette date est passée.") Date debutPret,
 			@NotNull @Future(message = "Cette date est passée.") Date finPret, String statut, Topo topo) {

@@ -26,8 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	
 		 BCryptPasswordEncoder bcpe = getBCPE();
-		 System.out.println(bcpe.encode("1234"));
-		 System.out.println(bcpe.encode("5555"));
+		 System.out.println("code 1234"+bcpe.encode("1234"));
+		 System.out.println("code 1111"+bcpe.encode("1111"));
+		 System.out.println("code 2222"+bcpe.encode("2222"));
+		 System.out.println("code 3333"+bcpe.encode("3333"));
 
 
 		auth.jdbcAuthentication().dataSource(dataSource)

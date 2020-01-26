@@ -25,7 +25,7 @@ public class Spot implements Serializable{
     private String nomSpot;
     @NotNull
     @Size(min = 3, max = 500)
-    private String descriptionSite;
+    private String descriptionSpot;
     @OneToMany(mappedBy = "spot", fetch = FetchType.LAZY)
     private Collection<Secteur> secteurs;
     @OneToMany(mappedBy = "spot", fetch = FetchType.LAZY)
@@ -34,11 +34,12 @@ public class Spot implements Serializable{
 	public Spot() {
 		super();
 	}
+	
 	public Spot(@NotNull @Size(min = 3, max = 100) String nomSpot,
-			@NotNull @Size(min = 3, max = 500) String descriptionSite) {
+			@NotNull @Size(min = 3, max = 500) String descriptionSpot) {
 		super();
 		this.nomSpot = nomSpot;
-		this.descriptionSite = descriptionSite;
+		this.descriptionSpot = descriptionSpot;
 	}
 
 	public int getIdSpot() {
@@ -53,11 +54,11 @@ public class Spot implements Serializable{
 	public void setNomSpot(String nomSpot) {
 		this.nomSpot = nomSpot;
 	}
-	public String getDescriptionSite() {
-		return descriptionSite;
+	public String getDescriptionSpot() {
+		return descriptionSpot;
 	}
-	public void setDescriptionSite(String descriptionSite) {
-		this.descriptionSite = descriptionSite;
+	public void setDescriptionSpot(String descriptionSpot) {
+		this.descriptionSpot = descriptionSpot;
 	}
 	public Collection<Secteur> getSecteurs() {
 		return secteurs;

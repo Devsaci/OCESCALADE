@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Topo</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<section id="topo">
+			<div class="container">
+				<h2>Topos disponibles au pret pour toi <strong name="rmUser" th:inline="text">
+				[[${#httpServletRequest.remoteUser}]]
+				</strong> pour faire une demande de prêt</h2>
+				<div id="affTopo" class="col-md-6" th:each="s:${topo}">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<div th:text="${s.nomTopo}">Site:</div>
+						</div>
+						<div class="panel-body">
+							<div class="panel-heading"></div>
+							<div th:text="${s.descriptionTopo}"></div>
+							<div>
+								<form th:action="@{topoPret}" method="get">
+									<input type="hidden" name="idTopo" th:value="${s.idTopo}" />
+									<button type="submit" class="btn btn-secondary pull-right">Demande
+										de Prêt</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

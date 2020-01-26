@@ -2,29 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout">
-	
-	
+      layout:decorate="layout">	
+      <head>
+    <meta charset="UTF-8"/>
+    <title>Accueil</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
+          th:href="@{css/MyStylesheet.css}"/>
+</head>
 <head>
 <meta charset="UTF-8" />
 <title>Accueil</title>
 </head>
-
-
 <body>
 	<div layout:fragment="content">
-
 		<section id="Accueil">
 			<div class="container">
 				<h2>Accueil</h2>
-
+				<p></p>
 				<div class="row">
-					<div class="col-md-10">
-
+					<div class="col-md-4">
 						<h4>
 							<strong>Escalade</strong> Notre site internet vous permettra
-							d’apprécier en partie notre volume d’activité et notre actualité.
-							
+							d’apprécier en partie notre volume d’activité et notre actualité.							
 						</h4>
 
 						<ul>
@@ -46,6 +47,10 @@
 							peuvent voir les topo disponibles et les réserver pour une
 							période)</h4></li>
 						</ul>
+						<h4>« Lao Tzeu l'a dit : 
+						il faut trouver la voie » : c’est le chemin à emprunter par 
+						le grimpeur pour arriver à destination : le haut de la voie.
+						</h4>
 						<h4>
 							Pour autant, c’est en nous rejoignant dans nos clubs que vous
 							pourrez réellement mesurer notre engouement pour les activités de
@@ -54,7 +59,7 @@
 
 					</div>
 
-					<div class="col-md-10">
+					<div class="col-md-6">
 						<p>
 							Voici une photo que j'ai prise lors de mes dernières vacances à
 							la montagne :<br /> <br> <img
@@ -69,6 +74,11 @@
 			</div>
 		</section>
 	</div>
+	
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- Javascript de Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	
 </body>
 </html>
 
