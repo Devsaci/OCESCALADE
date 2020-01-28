@@ -19,8 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OcescaladeApplication implements CommandLineRunner {
 	
-	  
-	
+	  	
 	@Autowired
 	private SpotRepository spotRepository;	
 	@Autowired
@@ -40,13 +39,13 @@ public class OcescaladeApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
-	
-		User u1 = userRepository.save(new User("toto","1111","ADMIN",true));
-		User u2 = userRepository.save(new User("toto1","1112","USER",true));
-		User u3 = userRepository.save(new User("toto2","1113","USER",true));
-		User u4 = userRepository.save(new User("toto3","1114","USER",true));
-		User u5 = userRepository.save(new User("toto4","1115","USER",true));
+
+/*
+		User u1 = userRepository.save(new User("Jimbo","1111","ADMIN",true));
+		User u2 = userRepository.save(new User("Elorna","1112","USER",true));
+		User u3 = userRepository.save(new User("Martin","1113","USER",true));
+		User u4 = userRepository.save(new User("Luck","1114","USER",true));
+		User u5 = userRepository.save(new User("Siri","1115","USER",true));
 
 
 		Spot s1 = spotRepository
@@ -64,7 +63,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 						+ " la chaîne de l’Himalaya, et est situé sur la frontière entre le Népal et l’état indien du Sikkim."));		
 	
 		Spot s4 = spotRepository
-				.save(new Spot("tassili n'Ajjer"," culmine à 2 158 mètres d'altitude à l'Adrar Afao et émerge en hautes falaises à "
+				.save(new Spot("Tassili n'Ajjer"," culmine à 2 158 mètres d'altitude à l'Adrar Afao et émerge en hautes falaises à "
 		+ "1 500 mètres au-dessus des ergs de Mourzouq et d'Oubari et d'Admer"));
 
 	
@@ -104,29 +103,23 @@ public class OcescaladeApplication implements CommandLineRunner {
 		Voie voie41 = voieRepository.save(new Voie("K2 Sud" , "Voie K2 Sud" , "4a, 5b", sct22));
 		Voie voie42 = voieRepository.save(new Voie("K2 Sud" , "Voie K2 Sud" , "6a, 9b", sct22));
 		
-		Voie voie51 = voieRepository.save(new Voie("14H", "C'est bon il dort.", "Impossible", sct31));
-		Voie voie52 = voieRepository.save(new Voie("17H", "Il fait sa ronde.", "Epique", sct31));
-		Voie voie61 = voieRepository.save(new Voie("Deux ailes", "Mais pas de poulet.", "Mortel", sct32));
-		Voie voie62 = voieRepository.save(new Voie("Brulant", "Quand il souffle sur vous.", "Mortel", sct32));
+		Voie voie51 = voieRepository.save(new Voie("KANGCHENJUNGA Nord", "Voie KANGCHENJUNGA Nord", "4a, 5b", sct31));
+		Voie voie52 = voieRepository.save(new Voie("KANGCHENJUNGA Nord", "Voie KANGCHENJUNGA Nord", "6a, 9b", sct31));
+		Voie voie61 = voieRepository.save(new Voie("KANGCHENJUNGA Sud", "Voie KANGCHENJUNGA Sud", "4a, 5b", sct32));
+		Voie voie62 = voieRepository.save(new Voie("KANGCHENJUNGA Sud", "Voie KANGCHENJUNGA Sud", "6a, 9b", sct32));
 
 
 		Topo tp1 = topoRepository.save(new Topo("EVEREST",
-		"Au milieu d'un monde perdu, des falaises de plusieurs centaines" +
-				" de kilomètres se dressent pour mettre au défi les grimpeurs" +
-				" les plus téméraires. ","toto",false,u1));
+		"Topo1 Description. ","Jimbo",false,u2));
 		Topo tp2 = topoRepository.save(new Topo("Le K2",
-		"Un dragon nommé Smaug protège depuis des milliers d'années" +
-				" un trèsor aux inestimables artefacts.","toto1",false,u3));
+		"Topo2 Description.","Martin",false,u1));
 		Topo tp3 = topoRepository.save(new Topo("KANGCHENJUNGA",
-		"Une jolie colline toute verte qui mène à une splendide falaise. En suivant les" +
-				" moutons, vous risquez de tomber de haut.","toto2",false,u4));
-		Topo tp4 = topoRepository.save(new Topo(" tassili n'Ajjer",
-		"culmine à 2 158 mètres d'altitude à l'Adrar Afao et émerge en hautes falaises à "
-		+ "1 500 mètres au-dessus des ergs de Mourzouq et d'Oubari "
-		+ "et d'Admer","toto3",false,u1));
+		"Topo3 Description.","Luck",false,u1));
+		Topo tp4 = topoRepository.save(new Topo("Tassili n'Ajjer",
+		"Topo4 Description ","Jimbo",false,u3));
 
+*/
 
-		
 		
 	}
 

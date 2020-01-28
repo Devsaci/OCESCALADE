@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Profil</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
+          th:href="@{css/MyStylesheet.css}"/>
+
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <section id="Profil">
+        <div class="container">
+        <h2> Votre Profil </h2>
+        <h4> Hello  <strong name="rmUser" th:inline="text">[[${#httpServletRequest.remoteUser}]]</strong> n'oublies
+            pas de valider tes demandes de prêt! </h4>
+            <p></p>
+            <h4> Mes Topos :</h4>
+            <p></p>
+            
+            
+            <div class="col-md-12">
+            <div id="affTopo" class="col-md-6" th:each="s:${listopo}">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"  th:text="${s.nomTopo}"></div>
+                    <div class="panel-body" >
+                        <div th:text="${s.descriptionTopo}"></div>
+                     <div class="pull-right">
+                      <label> Statut du topo : </label>
+                        <Span th:if="${s.loan} == true">Preté</Span>
+                        <Span th:if="${s.loan} == false">Libre</Span>
+                    </div> 
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+            <p></p>
+<h4> Mes prêts en cours :</h4>
+            <p></p>
+
+            <div class="col-md-12">
+<p th:unless="${listNoPret.size()}"> Vous n'avez pas de demande de prêts.</p>
+            </div>
+
+            <div id="lppe" class="row" th:each="p:${listPretProprio}" th:if="${p.getStatut()} == 'en attente'">
+                <div class="col-md-6">
+                <span>
+<Strong th:text="${p.getEmprunteur()}"></Strong> aimerait vous emprunter
+<Strong th:text="${p.getNomDuTopo()}"></Strong> du
+<Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+<Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
+                </span>
+                </div>
+        <div class="col-md-6">
+               <form th:action="@{choice}" method="post">
+                    <input type="hidden" name="idPret"  th:value="${p.getPretId()}"/>
+                    <button type="submit" name="accept" class="btn-default">Accepter</button>
+                    <button type="submit" name="refus" class="btn-default">Refuser</button>
+               </form>
+        </div>
+            </div>
+
+            <div id="lppa" class="row" th:each="p:${listPretProprio}">
+                <div class="col-md-6" th:if="${p.getStatut()} == 'accepte'">
+                       <Span>
+                       Vous avez accepté une demande de prêt,
+                           vous devez envoyer votre topo <Strong th:text="${p.getNomDuTopo()}"></Strong>
+                           à <Strong th:text="${p.getEmprunteur()}"></Strong> le
+                           <Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong>.
+                       </Span>
+                </div>
+                <div class="col-md-6" th:if="${p.getStatut()} == 'accepte'">
+                    <form th:action="@{envoiTopo}" method="post">
+                        <input type="hidden" name="idPret" th:value="${p.getPretId()}"/>
+                        <input type="hidden" name="nomDuTopoPret" th:value="${p.getNomDuTopo()}"/>
+                        <button type="submit" name="envoi" class="btn-default">Envoyer</button>
+                    </form>
+                </div>
+
+                <div class="col-md-12" th:if="${p.getStatut()} == 'en cours'">
+                    Vous avez envoyé votre topo <Strong th:text="${p.getNomDuTopo()}"></Strong> a
+                    <Strong th:text="${p.getEmprunteur()}"></Strong>. Il sera de retour au plus
+                    tard le <Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
+                </div>
+
+            </div>
+
+            <p></p>
+<h4> Mes prêts refusés :</h4>
+            <p></p>
+
+            <div id="lppr" class="row" th:each="p:${listPretProprio}">
+                <div class="col-md-12" th:if="${p.getStatut()} == 'refuse'">
+                    Vous avez refusé la demande de prêt de
+                    <Strong th:text="${p.getEmprunteur()}"></Strong>
+                     pour le topo <Strong th:text="${p.getNomDuTopo()}"></Strong> du
+                    <Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                    <Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
+                </div>
+            </div>
+
+            <p></p>
+<h4> Mes prêts terminés :</h4>
+            <p></p>
+
+            <div id="lppt" class="row" th:each="p:${listPretProprio}">
+                <div class="col-md-12" th:if="${p.getStatut()} == 'termine'">
+                    Le prêt du topo <Strong th:text="${p.getNomDuTopo()}"></Strong>
+                    à  <Strong th:text="${p.getEmprunteur()}"></Strong> du
+                    <Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                    <Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong> est
+                    <Strong th:text="${p.getStatut()}"></Strong>.
+                </div>
+            </div>
+
+            <p></p>
+<h4> Mes emprunts en cours :</h4>
+            <p></p>
+
+            <div class="col-md-12">
+                <p th:unless="${listNoEmprunt.size()}"> Vous n'avez pas de demande d'emprunts.</p>
+            </div>
+
+            <div id="lpe" class="row" th:each="e:${listPretEmprunteur}">
+
+                <div id="deta" class="col-md-8" th:if="${e.getStatut()} == 'en attente'">
+                <span>
+                    Votre demande d'emprunt du topo : <Strong th:text="${e.getNomDuTopo()}"></Strong>
+                     a <Strong th:text="${e.getProprietaire()}"></Strong>
+                    du <Strong th:text="${#dates.format(e.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                    <Strong th:text="${#dates.format(e.getFinPret(), 'dd-MM-yyyy')}"></Strong>
+                    est <Strong th:text="${e.getStatut()}"></Strong>.
+                </span>
+                </div>
+
+                <div id="deto" class="col-md-8" th:if="${e.getStatut()} == 'accepte'">
+                    <span> Votre demande d'emprunt du topo
+                        <Strong th:text="${e.getNomDuTopo()}"></Strong> à
+                        <Strong th:text="${e.getProprietaire()}"></Strong> a été
+                        <Strong>accepté</Strong>.  <Strong th:text="${e.getProprietaire()}"></Strong>
+                        vous enverra le topo le <Strong th:text="${#dates.format(e.getDebutPret(), 'dd-MM-yyyy')}"></Strong>.
+                    </span>
+                </div>
+
+                <div class="col-md-6" th:if="${e.getStatut()} == 'en cours'">
+                    Vous avez recu le topo <Strong th:text="${e.getNomDuTopo()}"></Strong> de
+                    <Strong th:text="${e.getProprietaire()}"></Strong>. Vous devez lui renvoyer
+                    avant le <Strong th:text="${#dates.format(e.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
+                </div>
+                <div class="col-md-6" th:if="${e.getStatut()} == 'en cours'">
+                <form th:action="@{renvoiTopo}" method="post">
+                    <input type="hidden" name="idPret" th:value="${e.getPretId()}"/>
+                    <input type="hidden" name="nomDuTopoPret" th:value="${e.getNomDuTopo()}"/>
+                    <button type="submit" name="renvoi" class="btn-default">Renvoyer</button>
+                </form>
+                </div>
+            </div>
+
+            <p></p>
+<h4> Mes emprunts refusés :</h4>
+            <p></p>
+
+            <div id="lper" class="row" th:each="e:${listPretEmprunteur}">
+                <div class="col-md-12" th:if="${e.getStatut()} == 'refuse'">
+                    <span>Votre demande du pret pour le topo :
+                    <Strong th:text="${e.getNomDuTopo()}"></Strong>  à
+                    <Strong th:text="${e.getProprietaire()}"></Strong> du
+                        <Strong th:text="${#dates.format(e.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                        <Strong th:text="${#dates.format(e.getFinPret(), 'dd-MM-yyyy')}"></Strong> a été
+                        <Strong th:text="${e.getStatut()}"></Strong>.
+                    </span>
+                </div>
+            </div>
+
+            <p></p>
+<h4> Mes emprunts terminés :</h4>
+            <p></p>
+
+            <div id="lpet" class="row" th:each="e:${listPretEmprunteur}">
+                <div class="col-md-12" th:if="${e.getStatut()} == 'termine'">
+                      <span>Votre emprunt pour le topo :
+                    <Strong th:text="${e.getNomDuTopo()}"></Strong>  à
+                    <Strong th:text="${e.getProprietaire()}"></Strong> du
+                        <Strong th:text="${#dates.format(e.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                        <Strong th:text="${#dates.format(e.getFinPret(), 'dd-MM-yyyy')}"></Strong> est
+                        <Strong th:text="${e.getStatut()}"></Strong>.
+                    </span>
+                </div>
+            </div>
+ 				<p></p>
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div id="profCreaTopo" class="panel-heading" th:text="'NEW TOPO'"></div>
+                    <div class="panel-body">
+                        <form th:action="@{saveTopo}" method="post">
+                            <div class="form-group">
+                                <label class="control-label">Nom du Topo :</label>
+                                <input class="form-control" type="text" name="nomTopo" th:value="${topo.nomTopo}"/>
+                                <span class="red" th:errors="${topo.nomTopo}"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Description du Topo :</label>
+                                <input class="form-control" type="text" name="descriptionTopo"
+                                       th:value="${topo.descriptionTopo}"/>
+                                <span class="red" th:errors="${topo.descriptionTopo}"></span>
+                            </div>
+                            <input type="hidden" name="nomUser" th:value="${#httpServletRequest.remoteUser}"/>
+                            <div>
+                                <button type="submit" class="btn btn-default">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
