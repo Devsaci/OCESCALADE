@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Confirmation Topo</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
+</head>
+<div layout:fragment="content">
+	<section id="ConfirmationTopo">
+		<div class="container">
+			<h2>Votre Profil</h2>
+			<h4>
+				Bonjour <strong th:text="${user.username}"></strong> n'oubliez pas
+				de valider vos demandes de prêt de topo!
+			</h4>
+			<p></p>
+			<h4>
+				<strong>Mon nouveau Topo :</strong>
+			</h4>
+			<div class="col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Vous avez créé un nouveau TOPO!</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label>ID:</label> <label th:text="${topo.idTopo}"></label>
+						</div>
+						<div class="form-group">
+							<label>Nom du Topo:</label> <label th:text="${topo.nomTopo}"></label>
+						</div>
+						<div class="form-group">
+							<label>Description du Topo:</label> <label
+								th:text="${topo.descriptionTopo}"></label>
+						</div>
+						<a th:href="@{/saveTopo}"><button
+								class="btn btn-default pull-right">retour</button> </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<body>
+</body>
+</html>

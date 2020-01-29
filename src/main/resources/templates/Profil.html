@@ -22,52 +22,60 @@
         <h4> Hello  <strong name="rmUser" th:inline="text">[[${#httpServletRequest.remoteUser}]]</strong> n'oublies
             pas de valider tes demandes de prêt! </h4>
             <p></p>
-            <h4> Mes Topos :</h4>
-            <p></p>
             
-            
-            <div class="col-md-12">
-            <div id="affTopo" class="col-md-6" th:each="s:${listopo}">
+        <div class="panel panel-primary">
+                                <div class="panel-heading"> Mes Topos </div>
+                                <div class="panel-body">
+<div id="affTopo" class="col-md-6" th:each="s:${listopo}">
                 <div class="panel panel-primary">
-                    <div class="panel-heading"  th:text="${s.nomTopo}"></div>
+                    <div class="panel-heading" >
+                        <div th:text="${s.nomTopo}">Site:</div>
+                    </div>
                     <div class="panel-body" >
-                        <div th:text="${s.descriptionTopo}"></div>
+                        <div th:text="${s.descriptionTopo}">
+                        </div>
                      <div class="pull-right">
                       <label> Statut du topo : </label>
                         <Span th:if="${s.loan} == true">Preté</Span>
                         <Span th:if="${s.loan} == false">Libre</Span>
-                    </div> 
                     </div>
+                    </div>
+
                 </div>
             </div>
-            </div>
 
+                                </div>
+                        </div>    
+<!--  -->
+     <div class="panel panel-primary">
+                                <div class="panel-heading">Pret et Emprint des Topos</div>
+                                <div class="panel-body">
+                                
+                                
 
-
-            <p></p>
-<h4> Mes prêts en cours :</h4>
-            <p></p>
-
-            <div class="col-md-12">
-<p th:unless="${listNoPret.size()}"> Vous n'avez pas de demande de prêts.</p>
+      <div class="panel panel-primary">
+                                <div class="panel-heading">Mes prêts en cours :</div>
+                                <div class="panel-body">
+           <div class="col-md-12">
+                <p th:unless="${listNoPret.size()}"> Vous n'avez pas de demande de prêts.</p>
             </div>
 
             <div id="lppe" class="row" th:each="p:${listPretProprio}" th:if="${p.getStatut()} == 'en attente'">
                 <div class="col-md-6">
                 <span>
-<Strong th:text="${p.getEmprunteur()}"></Strong> aimerait vous emprunter
-<Strong th:text="${p.getNomDuTopo()}"></Strong> du
-<Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
-<Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
+                    <Strong th:text="${p.getEmprunteur()}"></Strong> aimerait vous emprunter
+                    <Strong th:text="${p.getNomDuTopo()}"></Strong> du
+                    <Strong th:text="${#dates.format(p.getDebutPret(), 'dd-MM-yyyy')}"></Strong> au
+                    <Strong th:text="${#dates.format(p.getFinPret(), 'dd-MM-yyyy')}"></Strong>.
                 </span>
                 </div>
-        <div class="col-md-6">
-               <form th:action="@{choice}" method="post">
-                    <input type="hidden" name="idPret"  th:value="${p.getPretId()}"/>
+                <div class="col-md-6">
+                <form th:action="@{choice}" method="post">
+                    <input type="hidden" name="idPret"  th:value="${p.getIdPret()}"/>
                     <button type="submit" name="accept" class="btn-default">Accepter</button>
                     <button type="submit" name="refus" class="btn-default">Refuser</button>
-               </form>
-        </div>
+                </form>
+                </div>
             </div>
 
             <div id="lppa" class="row" th:each="p:${listPretProprio}">
@@ -81,7 +89,7 @@
                 </div>
                 <div class="col-md-6" th:if="${p.getStatut()} == 'accepte'">
                     <form th:action="@{envoiTopo}" method="post">
-                        <input type="hidden" name="idPret" th:value="${p.getPretId()}"/>
+                        <input type="hidden" name="idPret" th:value="${p.getIdPret()}"/>
                         <input type="hidden" name="nomDuTopoPret" th:value="${p.getNomDuTopo()}"/>
                         <button type="submit" name="envoi" class="btn-default">Envoyer</button>
                     </form>
@@ -95,9 +103,13 @@
 
             </div>
 
-            <p></p>
-<h4> Mes prêts refusés :</h4>
-            <p></p>
+                                </div>
+                        </div>
+<!--  -->
+     <div class="panel panel-primary">
+                                <div class="panel-heading">Mes prêts refusés :</div>
+                                <div class="panel-body">
+
 
             <div id="lppr" class="row" th:each="p:${listPretProprio}">
                 <div class="col-md-12" th:if="${p.getStatut()} == 'refuse'">
@@ -109,9 +121,12 @@
                 </div>
             </div>
 
-            <p></p>
-<h4> Mes prêts terminés :</h4>
-            <p></p>
+                                </div>
+                        </div>
+                        
+           <div class="panel panel-primary">
+                                <div class="panel-heading">Mes prêts terminés </div>
+                                <div class="panel-body">
 
             <div id="lppt" class="row" th:each="p:${listPretProprio}">
                 <div class="col-md-12" th:if="${p.getStatut()} == 'termine'">
@@ -123,9 +138,20 @@
                 </div>
             </div>
 
-            <p></p>
-<h4> Mes emprunts en cours :</h4>
-            <p></p>
+
+
+
+                                </div>
+                        </div> 
+                        
+    
+
+
+
+ <!--  -->
+     <div class="panel panel-primary">
+                                <div class="panel-heading">Mes emprunts en cours </div>
+                                <div class="panel-body">
 
             <div class="col-md-12">
                 <p th:unless="${listNoEmprunt.size()}"> Vous n'avez pas de demande d'emprunts.</p>
@@ -159,17 +185,22 @@
                 </div>
                 <div class="col-md-6" th:if="${e.getStatut()} == 'en cours'">
                 <form th:action="@{renvoiTopo}" method="post">
-                    <input type="hidden" name="idPret" th:value="${e.getPretId()}"/>
+                    <input type="hidden" name="idPret" th:value="${e.getIdPret()}"/>
                     <input type="hidden" name="nomDuTopoPret" th:value="${e.getNomDuTopo()}"/>
                     <button type="submit" name="renvoi" class="btn-default">Renvoyer</button>
                 </form>
                 </div>
             </div>
 
-            <p></p>
-<h4> Mes emprunts refusés :</h4>
-            <p></p>
+                       </div>
+                        </div>
 
+
+ <!--  -->
+      <div class="panel panel-primary">
+                                <div class="panel-heading">Mes emprunts refusés </div>
+                                <div class="panel-body">
+                                
             <div id="lper" class="row" th:each="e:${listPretEmprunteur}">
                 <div class="col-md-12" th:if="${e.getStatut()} == 'refuse'">
                     <span>Votre demande du pret pour le topo :
@@ -182,9 +213,20 @@
                 </div>
             </div>
 
-            <p></p>
-<h4> Mes emprunts terminés :</h4>
-            <p></p>
+
+
+
+
+                                </div>
+                        </div>
+
+
+
+<!--  -->
+     <div class="panel panel-primary">
+                                <div class="panel-heading">Mes emprunts terminés </div>
+                                <div class="panel-body">
+
 
             <div id="lpet" class="row" th:each="e:${listPretEmprunteur}">
                 <div class="col-md-12" th:if="${e.getStatut()} == 'termine'">
@@ -197,11 +239,29 @@
                     </span>
                 </div>
             </div>
- 				<p></p>
-            <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div id="profCreaTopo" class="panel-heading" th:text="'NEW TOPO'"></div>
+
+
+
+
+                                </div>
+                        </div>
+
+
+
+
+
+
+                                </div>
+                        </div>
+                        
+ <!--  -->
+ 
+           
+                <div id="profCreaTopo" class="panel panel-primary">
+                    <div class="panel-heading" th:text="'NEW TOPO'"></div>
                     <div class="panel-body">
+                    
+                     <div class="col-md-8">
                         <form th:action="@{saveTopo}" method="post">
                             <div class="form-group">
                                 <label class="control-label">Nom du Topo :</label>
@@ -219,9 +279,15 @@
                                 <button type="submit" class="btn btn-default">Save</button>
                             </div>
                         </form>
+                        
+                        
+                        </div>
                     </div>
                 </div>
-            </div>
+          
+            
+            
+            
         </div>
     </section>
 </div>

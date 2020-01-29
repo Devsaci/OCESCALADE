@@ -17,14 +17,12 @@
 	<div layout:fragment="content">
 		<section id="topo">
 			<div class="container">
-				<h2>Topos disponibles au pret pour toi <strong name="rmUser" th:inline="text">
+				<h3>Topos disponibles au pret pour toi <strong name="rmUser" th:inline="text">
 				[[${#httpServletRequest.remoteUser}]]
-				</strong> pour faire une demande de prêt</h2>
+				</strong> pqui te permet de faire une demande de prêt</h3>
 				<div id="affTopo" class="col-md-6" th:each="s:${topo}">
 					<div class="panel panel-primary">
-						<div class="panel-heading">
-							<div th:text="${s.nomTopo}">Site:</div>
-						</div>
+						<div class="panel-heading" th:text="${s.nomTopo}"></div>
 						<div class="panel-body">
 							<div class="panel-heading"></div>
 							<div th:text="${s.descriptionTopo}"></div>
@@ -38,7 +36,12 @@
 						</div>
 					</div>
 				</div>
+			<!--  -->	
+			 
+			<!--  -->	
 			</div>
+
+			
 		</section>
 	</div>
 </body>

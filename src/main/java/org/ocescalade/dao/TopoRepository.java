@@ -16,6 +16,8 @@ public interface TopoRepository extends JpaRepository<Topo, Integer>{
 	List<Topo> findTopoByUser_Username(String username);
 
 	List<Topo> findToposByUser_Username(String username);
+
+	Topo findTopoByNomTopo(String ndTopoPret);
 	
 
 }
