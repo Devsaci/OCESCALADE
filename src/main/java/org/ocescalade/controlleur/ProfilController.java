@@ -45,11 +45,13 @@ public class ProfilController {
 		List<Pret> lpp = pretRepository.findAllByProprietaire(username);
 		model.addAttribute("listPretProprio", lpp);
 
-		List<Pret> listnopret = pretRepository.findPretsByProprietaireAndStatutIsNotAndStatutIsNot(username, "refuse",
+		List<Pret> listnopret = pretRepository.findPretsByProprietaireAndStatutIsNotAndStatutIsNot
+				(username, "refuse",
 				"termine");
 		model.addAttribute("listNoPret", listnopret);
 
-		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot(username, "refuse",
+		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot
+				(username, "refuse",
 				"termine");
 		model.addAttribute("listNoEmprunt", listnoemprunt);
 

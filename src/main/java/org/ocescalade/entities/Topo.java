@@ -19,7 +19,7 @@ public class Topo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idTopo;
+	private int id;
 	@NotNull
 	@Size(min = 3, max = 50)
 	private String nomTopo;
@@ -29,7 +29,7 @@ public class Topo implements Serializable {
 	private String nomProprietaire;
 	private Boolean isLoan;
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "idUser")
 	private User user;
 	@OneToMany(mappedBy = "topo", fetch = FetchType.LAZY)
 	private Collection<Pret> prets;
@@ -49,12 +49,12 @@ public class Topo implements Serializable {
 		this.user = user;
 	}
 
-	public int getIdTopo() {
-		return idTopo;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdTopo(int idTopo) {
-		this.idTopo = idTopo;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNomTopo() {

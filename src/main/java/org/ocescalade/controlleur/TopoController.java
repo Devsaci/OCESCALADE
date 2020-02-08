@@ -40,7 +40,7 @@ public class TopoController {
 	public String affPretTopo(@RequestParam(name = "idTopo", defaultValue = "") Integer idt, 
 			Model model) {
 		model.addAttribute("idTopo", idt);
-		Topo topo = topoRepository.findToposByIdTopoIs(idt);
+		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
 		model.addAttribute("pret", new Pret());
 		return "topoPret";
@@ -52,7 +52,7 @@ public class TopoController {
 			BindingResult bindingResult, 
 			Model model) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		Topo topo = topoRepository.findToposByIdTopoIs(idt);
+		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
 		pret.setEmprunteur(username);
 		pret.setProprietaire(topo.getNomProprietaire());

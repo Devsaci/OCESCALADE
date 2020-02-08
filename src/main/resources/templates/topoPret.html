@@ -23,6 +23,7 @@
 [[${#httpServletRequest.remoteUser}]]</strong> 
 tu peux valider ta demande de prêt pour le topo 
 <strong name="nomTopo" th:text="${topo.getNomTopo()}"></strong> 
+
 </h4>
  <div class="col-md-8">
  
@@ -44,7 +45,7 @@ tu peux valider ta demande de prêt pour le topo
    <span class="red" th:errors="${pret.finPret}"></span>
   </div>
   <div>
-  <input type="hidden" name="idTopo" th:value="${topo.idTopo}"/>
+  <input type="hidden" name="id" th:value="${topo.id}"/>
   <button type="submit" class="btn btn-default">Envoie Demande</button>
   <a th:href="@{/Topo}"> <button type="button" class="btn btn-default pull-right">Retour</button></a> 
   </div>

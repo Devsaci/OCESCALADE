@@ -28,7 +28,7 @@
 							<div th:text="${s.descriptionTopo}"></div>
 							<div>
 								<form th:action="@{topoPret}" method="get">
-									<input type="hidden" name="idTopo" th:value="${s.idTopo}" />
+									<input type="hidden" name="id" th:value="${s.id}" />
 									<button type="submit" class="btn btn-secondary pull-right">Demande
 										de Prêt</button>
 								</form>

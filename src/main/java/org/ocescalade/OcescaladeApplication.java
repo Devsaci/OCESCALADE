@@ -40,12 +40,12 @@ public class OcescaladeApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-/*
-		User u1 = userRepository.save(new User("Jimbo","1111","ADMIN",true));
-		User u2 = userRepository.save(new User("Elorna","1112","USER",true));
-		User u3 = userRepository.save(new User("Martin","1113","USER",true));
-		User u4 = userRepository.save(new User("Luck","1114","USER",true));
-		User u5 = userRepository.save(new User("Siri","1115","USER",true));
+
+		User u1 = userRepository.save(new User(1,"Jimbo","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","ADMIN",true,null));
+		User u2 = userRepository.save(new User(2,"Elorna","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","USER",true,null));
+		User u3 = userRepository.save(new User(3,"Martin","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","USER",true,null));
+		User u4 = userRepository.save(new User(4,"Luck","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","USER",true,null));
+		User u5 = userRepository.save(new User(5,"Siri","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","USER",true,null));
 
 
 		Spot s1 = spotRepository
@@ -118,7 +118,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 		Topo tp4 = topoRepository.save(new Topo("Tassili n'Ajjer",
 		"Topo4 Description ","Jimbo",false,u3));
 
-*/
+
 
 		
 	}
