@@ -41,8 +41,9 @@ public class TopoController {
 			Model model) {
 		model.addAttribute("idTopo", idt);
 		Topo topo = topoRepository.findToposByIdIs(idt);
-		model.addAttribute("topo", topo);
+		model.addAttribute("topo", new Topo());
 		model.addAttribute("pret", new Pret());
+		System.out.println("topo = /////////////TOPO///////////// " + topo);
 		return "topoPret";
 	}
 
