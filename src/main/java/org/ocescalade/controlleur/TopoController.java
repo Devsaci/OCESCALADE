@@ -54,7 +54,7 @@ public class TopoController {
 			Model model) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Topo topo = topoRepository.findToposByIdIs(idt);
-		model.addAttribute("topo", topo);
+		model.addAttribute("topo", new Topo());
 		pret.setEmprunteur(username);
 		pret.setProprietaire(topo.getNomProprietaire());
 		pret.setNomDuTopo(topo.getNomTopo());
