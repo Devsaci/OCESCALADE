@@ -37,24 +37,26 @@ public class TopoController {
 	}
 
 	@RequestMapping(value = "/topoPret")
-	public String affPretTopo(@RequestParam(name = "idTopo", defaultValue = "") Integer idt, 
+	public String affPretTopo(@RequestParam(name = "id", defaultValue = "") Integer idt, 
 			Model model) {
 		model.addAttribute("idTopo", idt);
 		Topo topo = topoRepository.findToposByIdIs(idt);
-		model.addAttribute("topo", new Topo());
+		model.addAttribute("topo", topo);
 		model.addAttribute("pret", new Pret());
 		System.out.println("topo = /////////////TOPO///////////// " + topo);
 		return "topoPret";
 	}
 
 	@RequestMapping(value = "/savePret", method = RequestMethod.POST)
-	public String savePret(@RequestParam(name = "idTopo", defaultValue = "") Integer idt, 
+	public String savePret(@RequestParam(name = "id", defaultValue = "") Integer idt, 
 			@Valid Pret pret,
 			BindingResult bindingResult, 
 			Model model) {
+		System.out.println("idt = idt " + idt);
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Topo topo = topoRepository.findToposByIdIs(idt);
-		model.addAttribute("topo", new Topo());
+		model.addAttribute("topo", topo);
+		System.out.println("topo =**************TOPO************" + topo);
 		pret.setEmprunteur(username);
 		pret.setProprietaire(topo.getNomProprietaire());
 		pret.setNomDuTopo(topo.getNomTopo());
