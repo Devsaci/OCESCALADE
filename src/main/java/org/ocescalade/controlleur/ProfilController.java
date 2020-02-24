@@ -46,13 +46,11 @@ public class ProfilController {
 		model.addAttribute("listPretProprio", lpp);
 
 		List<Pret> listnopret = pretRepository.findPretsByProprietaireAndStatutIsNotAndStatutIsNot
-				(username, "refuse",
-				"termine");
+				(username, "refuse","termine");
 		model.addAttribute("listNoPret", listnopret);
 
 		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot
-				(username, "refuse",
-				"termine");
+				(username, "refuse","termine");
 		model.addAttribute("listNoEmprunt", listnoemprunt);
 
 		return "Profil";
@@ -94,27 +92,27 @@ public class ProfilController {
 	}
 
 	@RequestMapping(value = "/choice", method = RequestMethod.POST, params = "accept")
-	public String acceptPret(@RequestParam(name = "idPret", defaultValue = "") int idPret, Model model) {
-		Pret pret = pretRepository.getOne(idPret);
+	public String acceptPret(@RequestParam(name = "PretID", defaultValue = "") int id, Model model) {
+		Pret pret = pretRepository.getOne(id);
 		pret.setStatut("accepte");
 		pretRepository.save(pret);
 		return "redirect:/Profil";
 	}
 
     @RequestMapping(value="/choice", method = RequestMethod.POST, params="refus")
-    public String refusPret(@RequestParam(name="idPret", defaultValue ="")int idPret,
+    public String refusPret(@RequestParam(name="PretID", defaultValue ="")int id,
                              Model model) {
-        Pret pret = pretRepository.getOne(idPret);
+        Pret pret = pretRepository.getOne(id);
         pret.setStatut("refuse");
         pretRepository.save(pret);
         return "redirect:/Profil";
     }
     
     @RequestMapping(value="/envoiTopo", method = RequestMethod.POST)
-    public String envoiTopo(@RequestParam(name="idPret", defaultValue ="")int idPret,
+    public String envoiTopo(@RequestParam(name="PretID", defaultValue ="")int id,
                             @RequestParam(name="nomDuTopoPret", defaultValue ="")String ndTopoPret,
                              Model model) {
-        Pret pret = pretRepository.getOne(idPret);
+        Pret pret = pretRepository.getOne(id);
         pret.setStatut("en cours");
         pretRepository.save(pret);
         Topo topo = topoRepository.findTopoByNomTopo(ndTopoPret);
@@ -124,10 +122,10 @@ public class ProfilController {
     }
     
     @RequestMapping(value="/renvoiTopo", method = RequestMethod.POST)
-    public String renvoiTopo(@RequestParam(name="idPret", defaultValue ="")int idPret,
+    public String renvoiTopo(@RequestParam(name="PretID", defaultValue ="")int id,
                              @RequestParam(name="nomDuTopoPret", defaultValue ="")String ndTopoPret,
                              Model model) {
-        Pret pret = pretRepository.getOne(idPret);
+        Pret pret = pretRepository.getOne(id);
         pret.setStatut("termine");
         pretRepository.save(pret);
         Topo topo = topoRepository.findTopoByNomTopo(ndTopoPret);

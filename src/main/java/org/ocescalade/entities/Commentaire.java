@@ -14,7 +14,7 @@ public class Commentaire {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCom;
+	private int id;
 	@NotNull
 	@Size(min = 3, max = 100)
 	private String titre;
@@ -43,12 +43,12 @@ public class Commentaire {
 		this.spot = spot;
 	}
 
-	public int getIdCom() {
-		return idCom;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdCom(int idCom) {
-		this.idCom = idCom;
+	public void setIdCom(int id) {
+		this.id = id;
 	}
 
 	public String getTitre() {

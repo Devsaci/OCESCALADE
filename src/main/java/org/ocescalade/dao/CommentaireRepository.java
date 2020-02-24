@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CommentaireRepository extends JpaRepository<Commentaire,Integer>{
 
-	List<Commentaire> findCommentairesBySpotIdSpot(Integer sid);
+	List<Commentaire> findCommentairesBySpotId(Integer sid);
+
 
 }

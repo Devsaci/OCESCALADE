@@ -16,60 +16,38 @@
 	<div layout:fragment="content">
 		<section id="ListSpot">
 			<div class="container">
-			<div class="col-md-12">
-				<h2>Nous proposant les meilleurs Spot</h2>
+				<div class="col-md-12">
+					<h2>Nous proposant les meilleurs Spot</h2>
 
-				<div class="panel panel-primary">
-					<div class="panel-heading">Cherche ton spot</div>
-					<div class="panel-body">
+					<div class="panel panel-warning">
+						<div class="panel-heading">Cherche ton spot</div>
+						<div class="panel-body">
 
-						<form th:action="@{ListSpot}" method="get">
-							<label>Nom du Spot:</label> <input type="text" name="motclef1"
-								th:value="${motclef1}" /> <label>Description du Spot:</label> <input
-								type="text" name="motclef2" th:value="${motclef2}" />
-							<button class="btn btn-secondary">Chercher</button>
-						</form>
-
-
-					</div>
-				</div>
-</div>
-			</div>
-					<div class="container">
-					<div class="col-md-6" th:each="s:${listSpot}">
-						
-<div class="panel panel-primary">
-<div class="panel-heading" th:text="${s.nomSpot}"></div>
-<div class="panel-body">						
-<div th:text="${s.descriptionSpot}"></div>																		
-<form th:action="@{Spot}" method="get">
-<input type="hidden" name="SpotID" th:value="${s.idSpot}" />
-<button type="submit" class="btn btn-secondary pull-right">Afficher le Site</button>
-</form>
-										
-
-</div>
-</div>
-						
-						
-						
-						
-						
-
-							
-							
+							<form th:action="@{ListSpot}" method="get">
+								<label>Nom du Spot:</label> <input type="text" name="motclef1"
+									th:value="${motclef1}" /> <label>Description du Spot:</label>
+								<input type="text" name="motclef2" th:value="${motclef2}" />
+								<button class="btn btn-secondary">Chercher</button>
+							</form>
 						</div>
 					</div>
-
-	
-
-
-
-
-
-
-
-
+				</div>
+			</div>
+			<div class="container">
+				<div class="col-md-6" th:each="s:${listSpot}">
+					<div class="panel panel-success">
+						<div class="panel-heading" th:text="${s.nomSpot}"></div>
+						<div class="panel-body">
+							<div th:text="${s.descriptionSpot}"></div>
+							<form th:action="@{Spot}" method="get">
+								<input type="hidden" name="SpotID" th:value="${s.id}" />
+								<button type="submit" class="btn btn-secondary pull-right">Afficher
+									le Site</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</div>
 </body>

@@ -1,116 +1,110 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Grimpe</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
-          th:href="@{css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
-          th:href="@{css/MyStylesheet.css}"/>
+<meta charset="UTF-8" />
+<title>Grimpe</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
 </head>
 <body>
-<div layout:fragment="content">
-    <section id="Spot">
-    
-    
-        <div class="container">
-
-   <h2>Vos Commentaires  <strong name="User" th:inline="text">
-[[${#httpServletRequest.remoteUser}]]</strong></h2> 
-            <div class="col-md-12" th:each="t:${commentaires}">
-                <div class="panel panel-primary">
-                    <div class="panel-heading" th:text="${t.titre}"></div>
-                    <div class="panel-body" >
-                        <div th:text="${t.message}"></div>
-                        <p> Ecrit par <span th:text="${t.auteur}"></span></p>
-                    </div>
-                </div>
-            </div>
-
-            <h2> Resultats de la recherche</h2>
-   
-    
-            <h4>Spot :</h4>
-<div class="col-md-12">            
-<div class="panel panel-primary">
-<div class="panel-heading"  th:text="${spot.nomSpot}"></div>
-<div class="panel-body">
-<div th:text="${spot.descriptionSpot}"></div>                                             
-</div>
-</div>       
-</div>
-
-
-            <h4>Secteurs :</h4>
-<div class="col-md-6" th:each="c:${secteur}">
- <div class="panel panel-primary" >            
- <div class="panel-heading" th:text="${c.nomSecteur}"></div> 
-                    <div class="panel-body" >
-                        <div th:text="${c.descriptionSecteur}"></div>
+	<div layout:fragment="content">
+		<section id="Spot">
+			<div class="container">
+				<h3>
+					Vos Commentaires <strong name="User" th:inline="text">
+						[[${#httpServletRequest.remoteUser}]]</strong>
+				</h3>
+				<div class="col-md-12" th:each="t:${commentaires}">
+					<div class="panel panel-primary">
+						<div class="panel-heading" th:text="${t.titre}"></div>
+						<div class="panel-body">
+							<div th:text="${t.message}"></div>
+							<p>
+								Ecrit par <span th:text="${t.auteur}"></span>
+							</p>
+						</div>
 					</div>
-</div>            
-</div>
+				</div>
+
+				<h2>Resultats de la recherche</h2>
 
 
-            <h4>Voies :</h4>
-<div class="col-md-10" th:each="v:${voie}">
-     
-         <div class="panel panel-primary">
-                  <div class="panel-heading" th:text="${v.nomVoie}"></div>
-            <div class="panel-body" >
-                  	<div th:text="${v.descriptionVoie}"></div>
-            		<div th:text="${v.niveauVoie}"></div>
-            </div>
-         </div>
 
-</div>
-     
-     
-     
-         
-            
- 
-   <div class="col-md-6">        
-<h3>Voulez vous <strong name="User" th:inline="text">
-[[${#httpServletRequest.remoteUser}]]</strong> Laissez un commentaire?</h3> 
-<div class="panel panel-primary">
-<div class="panel-heading"> Commentaire</div>
-<div class="panel-body">
-
-			<form th:action="@{/saveCommentaire}" method="post">
-                <div class="form-group">
-                    <label class="control-label">Titre :</label>
-                    <input class="form-control" type="text" name="titre" th:value="${commentaire.titre}"/>
-                    <span class="red" th:errors="${commentaire.titre}"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Message :</label>
-                    <input class="form-control" type="text" name="message"
-                           th:value="${commentaire.message}"/>
-                    <span class="red" th:errors="${commentaire.message}"></span>
-                </div>
-                <input type="hidden" name="SpotID" th:value="${spot.idSpot}"/>
-                <input type="hidden" name="auteur" th:value="${#httpServletRequest.remoteUser}"/>
-                <div>
-                    <button type="submit" class="btn btn-default">Envoyer</button>
-                </div>
-            </form>
+				<div class="col-md-12">
+					<h4>Spot :</h4>
+					<div class="panel panel-primary">
+						<div class="panel-heading" th:text="${spot.nomSpot}"></div>
+						<div class="panel-body">
+							<div th:text="${spot.descriptionSpot}"></div>
+						</div>
+					</div>
+				</div>
 
 
-</div>
-</div>  
 
- </div>        
-       
-            
+				<div class="col-md-10" th:each="c:${secteur}">
+					<h4>Secteurs :</h4>
+					<div class="panel panel-primary">
+						<div class="panel-heading" th:text="${c.nomSecteur}"></div>
+						<div class="panel-body">
+							<div th:text="${c.descriptionSecteur}"></div>
+						</div>
+					</div>
+				</div>
 
-  </div>
- </section>
-</div>
 
 
+				<div class="col-md-8" th:each="v:${voie}">
+					<h4>Voies :</h4>
+					<div class="panel panel-primary">
+						<div class="panel-heading" th:text="${v.nomVoie}"></div>
+						<div class="panel-body">
+							<div th:text="${v.descriptionVoie}"></div>
+							<div th:text="${v.niveauVoie}"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<h3>
+						Voulez vous <strong name="User" th:inline="text">
+							[[${#httpServletRequest.remoteUser}]]</strong> Laissez un commentaire?
+					</h3>
+					<div class="panel panel-primary">
+						<div class="panel-heading">Commentaire</div>
+						<div class="panel-body">
+
+							<form th:action="@{/saveCommentaire}" method="post">
+								<div class="form-group">
+									<label class="control-label">Titre :</label> <input
+										class="form-control" type="text" name="titre"
+										th:value="${commentaire.titre}" /> <span class="red"
+										th:errors="${commentaire.titre}"></span>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Message :</label> <input
+										class="form-control" type="text" name="message"
+										th:value="${commentaire.message}" /> <span class="red"
+										th:errors="${commentaire.message}"></span>
+								</div>
+								<input type="hidden" name="SpotID" th:value="${spot.id}" /> <input
+									type="hidden" name="auteur"
+									th:value="${#httpServletRequest.remoteUser}" />
+								<div>
+									<button type="submit" class="btn btn-default">Envoyer</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </body>
 </html>

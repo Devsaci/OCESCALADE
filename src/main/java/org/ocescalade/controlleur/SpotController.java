@@ -34,7 +34,8 @@ public class SpotController {
 	public String chercherSpot(Model model, 
 			@RequestParam(name = "motclef1", defaultValue = "") String mc1,
 			@RequestParam(name = "motclef2", defaultValue = "") String mc2) {
-		List<Spot> lSpot = spotRepository.findSpotByNomSpotIsContainingAndDescriptionSpotContaining(mc1, mc2);
+		List<Spot> lSpot = spotRepository
+				.findSpotByNomSpotIsContainingAndDescriptionSpotContaining(mc1, mc2);
 		//List<Spot> listSpot = spotRepository.findAll();
 		model.addAttribute("listSpot", lSpot);
 		model.addAttribute("motclef1", mc1);
@@ -44,20 +45,21 @@ public class SpotController {
 	
     @RequestMapping(value="/Spot")
     public String AfficherSpot(Model model,
-    		@RequestParam(name="SpotID", defaultValue ="")Integer sid) {
+    		@RequestParam(name="SpotID", 
+    		defaultValue ="")Integer sid) {
     	
     	model.addAttribute("SpotID", sid);  
     	
     	Spot spot = spotRepository.getOne(sid);
         model.addAttribute("spot" , spot );
         
-        List<Secteur> secteurs = secteurRepository.findSecteursBySpotIdSpot(sid);
+        List<Secteur> secteurs = secteurRepository.findSecteursBySpotId(sid);
         model.addAttribute("secteur" , secteurs );
         
-        List<Voie> voies = voieRepository.findVoiesBySecteurSpotIdSpot(sid);
+        List<Voie> voies = voieRepository.findVoiesBySecteurSpotId(sid);
         model.addAttribute("voie", voies);
         
-        List<Commentaire> commentaires = commentaireRepository.findCommentairesBySpotIdSpot(sid);
+        List<Commentaire> commentaires = commentaireRepository.findCommentairesBySpotId(sid);
         model.addAttribute("commentaires", commentaires);
         
         model.addAttribute("commentaire", new Commentaire());
@@ -79,13 +81,13 @@ public class SpotController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("spot", spot);
 			
-			List<Secteur> secteurs=secteurRepository.findSecteursBySpotIdSpot(sid);
+			List<Secteur> secteurs=secteurRepository.findSecteursBySpotId(sid);
 			model.addAttribute("secteur", secteurs);
 			
-			List<Voie> voies=voieRepository.findVoiesBySecteurSpotIdSpot(sid);
+			List<Voie> voies=voieRepository.findVoiesBySecteurSpotId(sid);
 			model.addAttribute("voie", voies);
 			
-			List<Commentaire> commentaires=commentaireRepository.findCommentairesBySpotIdSpot(sid);
+			List<Commentaire> commentaires=commentaireRepository.findCommentairesBySpotId(sid);
 			model.addAttribute("commentaires", commentaires);
 			
 			return "Spot";			

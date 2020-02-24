@@ -29,7 +29,6 @@ public class Topo implements Serializable {
 	private String nomProprietaire;
 	private Boolean isLoan;
 	@ManyToOne
-	@JoinColumn(name = "idUser")
 	private User user;
 	@OneToMany(mappedBy = "topo", fetch = FetchType.LAZY)
 	private Collection<Pret> prets;

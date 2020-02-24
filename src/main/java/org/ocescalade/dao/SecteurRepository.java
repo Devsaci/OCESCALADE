@@ -12,7 +12,11 @@ public interface SecteurRepository extends JpaRepository<Secteur, Integer> {
 
 	 @Query ("SELECT e FROM Secteur e WHERE e.nomSecteur LIKE :x" )
      List<Secteur> chercheSecteur(@Param("x")String nom);
+	 
+	//implement spotControlleur method 
+	List<Secteur> findSecteursBySpotId(Integer sid);
 	
-	List<Secteur> findSecteursBySpotIdSpot(Integer sid);
+
+
 
 }

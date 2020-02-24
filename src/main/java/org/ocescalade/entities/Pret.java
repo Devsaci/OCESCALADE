@@ -21,7 +21,7 @@ public class Pret implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer IdPret;
+	private Integer Id;
 	private String emprunteur;
 	private String proprietaire;
 	private String nomDuTopo;
@@ -58,11 +58,11 @@ public class Pret implements Serializable {
 	}
 	
 	
-	public Integer getIdPret() {
-		return IdPret;
+	public Integer getId() {
+		return Id;
 	}
-	public void setIdPret(Integer idPret) {
-		IdPret = idPret;
+	public void setId(Integer id) {
+		Id = id;
 	}
 	public String getEmprunteur() {
 		return emprunteur;

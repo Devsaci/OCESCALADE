@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TopoRepository extends JpaRepository<Topo, Integer>{
 		/* Impl  TopoController    */ 
-	List<Topo> findAllByNomProprietaireIsNot(String username);
+	List<Topo> findByUser_IdIsNot(int id);
 
 	Topo findToposByIdIs(Integer idt);
 	

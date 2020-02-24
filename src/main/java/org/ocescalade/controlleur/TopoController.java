@@ -30,8 +30,9 @@ public class TopoController {
 
 	@RequestMapping(value = "/Topo")
 	public String Topo(Model model) {
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		List<Topo> listopo = topoRepository.findAllByNomProprietaireIsNot(username);
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();		
+		User userConnected=userRepsitory.findUserByUsername(username);
+		List<Topo> listopo = topoRepository.findByUser_IdIsNot(userConnected.getId());
 		model.addAttribute("topo", listopo);
 		return "Topo";
 	}
@@ -43,7 +44,7 @@ public class TopoController {
 		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
 		model.addAttribute("pret", new Pret());
-		System.out.println("topo = /////////////TOPO///////////// " + topo);
+		//System.out.println("topo = /////////////TOPO///////////// " + topo);
 		return "topoPret";
 	}
 
@@ -52,11 +53,11 @@ public class TopoController {
 			@Valid Pret pret,
 			BindingResult bindingResult, 
 			Model model) {
-		System.out.println("idt = idt " + idt);
+		//System.out.println("idt = idt " + idt);
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
-		System.out.println("topo =**************TOPO************" + topo);
+		//System.out.println("topo =**************TOPO************" + topo);
 		pret.setEmprunteur(username);
 		pret.setProprietaire(topo.getNomProprietaire());
 		pret.setNomDuTopo(topo.getNomTopo());

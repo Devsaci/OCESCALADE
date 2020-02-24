@@ -1,163 +1,126 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Nouveau Spot</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
-          th:href="@{css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/MyStylesheet.css"
-          th:href="@{css/MyStylesheet.css}"/>
+<meta charset="UTF-8" />
+<title>Nouveau Spot</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	href="../static/css/MyStylesheet.css" th:href="@{css/MyStylesheet.css}" />
 </head>
-
 <body>
-
-<div layout:fragment="content">
-    <section id="Ajoute Spot">
-        <div class="container">
-            <h2> Nouveau Spot </h2>
-            <h4>Créé un nouveau Spot ou ajoute des infos à un Spot déjà créé!</h4>
-            
-            <div class="col-md-8">
- 
-                                <div class="panel panel-primary">
-                                <div class="panel-heading">CREER UN Spot</div>
-                                <div class="panel-body">
-
-						<form th:action="@{AjoutSpot}" method="post">
-                            <div class="form-group">
-                                <label class="control-label">Nom du Spot :</label>
-                                <input class="form-control" type="text" name="nomSpot" th:value="${spot.nomSpot}"/>
-                                <span class="red" th:errors="${spot.nomSpot}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Description du Spot:</label>
-                                <input class="form-control" type="text" name="descriptionSpot"
-                                       th:value="${spot.descriptionSpot}"/>
-                                <span class="red" th:errors="${spot.descriptionSpot}"></span>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-default">Enregistrer</button>
-                            </div>
-                        </form>
-
-
-
-                                </div>
-                        		</div>
-                              
-            </div>
-
-
-
-            <div class="col-md-8">
-            
-            
-                        		<div class="panel panel-primary">
-                                <div class="panel-heading">Creer un Spot</div>
-                                <div class="panel-body">
-
-
-                        <form th:action="@{AjoutSecteur}" method="post">
-                            <div class="form-group">
-                                <label class="control-label">Spot du Secteur :</label>
-                                <select class="form-control" name="SpotSecteur">
-                                <option th:each="spot : ${listSpot}"  th:text="${spot.nomSpot}"
-                                        th:value="${spot.idSpot}"></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Nom du Secteur :</label>
-                                <input class="form-control" type="text" name="nomSecteur"
-                                       th:value="${secteur.nomSecteur}"/>
-                                <span class="red" th:errors="${secteur.nomSecteur}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Description du Secteur :</label>
-                                <input class="form-control" type="text" name="descriptionSecteur"
-                                       th:value="${secteur.descriptionSecteur}"/>
-                                <span class="red" th:errors="${secteur.descriptionSecteur}"></span>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-default">Enregistrer</button>
-                            </div>
-                        </form>
-
-
-
-
-
-                                </div>
-                  	</div>
-		
-         
-                                
-            </div>
-
-
-
-            <div class="col-md-8">
-            
-
-                                <div class="panel panel-primary">
-                                <div class="panel-heading">Creer une voie</div>
-                                <div class="panel-body">
-
-
-                        <form th:action="@{AjoutVoie}" method="post">
-                            <div class="form-group">
-                                <label class="control-label">Secteur de la Voie :</label>
-                                <select class="form-control" name="SecteurVoie">
-                                    <option th:each="secteur : ${listSecteur}"  th:text="${secteur.nomSecteur}"
-                                            th:value="${secteur.idSecteur}"></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Nom de la Voie :</label>
-                                <input class="form-control" type="text" name="nomVoie" th:value="${voie.nomVoie}"/>
-                                <span class="red" th:errors="${voie.nomVoie}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Description de la Voie :</label>
-                                <input class="form-control" type="text" name="descriptionVoie"
-                                       th:value="${voie.descriptionVoie}"/>
-                                <span class="red" th:errors="${voie.descriptionVoie}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Difficulté de la Voie :</label>
-                                <input class="form-control" type="text" name="niveauVoie"
-                                       th:value="${voie.niveauVoie}"/>
-                                <span class="red" th:errors="${voie.niveauVoie}"></span>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-default">Enregistrer</button>
-                            </div>
-                        </form>
-
-
-
-
-
-
-                                </div>
-                        		</div>
-                    
-                    
-
-                        
-                        
-                        
-                        
-       
-                
-                
-            </div>
-
-        </div>
-    </section>
-</div>
-
+	<div layout:fragment="content">
+		<section id="Ajoute Spot">
+			<div class="container">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4>Nouveau Spot</h4>
+					</div>
+					<div class="panel-body">
+						<!--  Capsule enregistre Spot -->
+						<div class="col-md-8">
+							<div class="panel panel-success">
+								<div class="panel-heading">Creer un Spot</div>
+								<div class="panel-body">
+									<form th:action="@{AjoutSpot}" method="post">
+										<div class="form-group">
+											<label class="control-label">Nom du Spot :</label> <input
+												class="form-control" type="text" name="nomSpot"
+												th:value="${spot.nomSpot}" /> <span class="red"
+												th:errors="${spot.nomSpot}"></span>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Description du Spot:</label> <input
+												class="form-control" type="text" name="descriptionSpot"
+												th:value="${spot.descriptionSpot}" /> <span class="red"
+												th:errors="${spot.descriptionSpot}"></span>
+										</div>
+										<div>
+											<button type="submit" class="btn btn-danger">Enregistrer</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!--  Capsule enregistre Secteur -->
+						<div class="col-md-8">
+							<div class="panel panel-info">
+								<div class="panel-heading">Creer un Secteur</div>
+								<div class="panel-body">
+									<form th:action="@{AjoutSecteur}" method="post">
+										<div class="form-group">
+											<label class="control-label">Spot du Secteur :</label> <select
+												class="form-control" name="SpotSecteur">
+												<option th:each="spot : ${listSpot}"
+													th:text="${spot.nomSpot}" th:value="${spot.id}"></option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Nom du Secteur :</label> <input
+												class="form-control" type="text" name="nomSecteur"
+												th:value="${secteur.nomSecteur}" /> <span class="red"
+												th:errors="${secteur.nomSecteur}"></span>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Description du Secteur :</label>
+											<input class="form-control" type="text"
+												name="descriptionSecteur"
+												th:value="${secteur.descriptionSecteur}" /> <span
+												class="red" th:errors="${secteur.descriptionSecteur}"></span>
+										</div>
+										<div>
+											<button type="submit" class="btn btn-danger">Enregistrer</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!--  Capsule enregistre Voie -->
+						<div class="col-md-8">
+							<div class="panel panel-warning">
+								<div class="panel-heading">Creer une voie</div>
+								<div class="panel-body">
+									<form th:action="@{AjoutVoie}" method="post">
+										<div class="form-group">
+											<label class="control-label">Secteur de la Voie :</label> <select
+												class="form-control" name="SecteurVoie">
+												<option th:each="secteur : ${listSecteur}"
+													th:text="${secteur.nomSecteur}" th:value="${secteur.id}"></option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Nom de la Voie :</label> <input
+												class="form-control" type="text" name="nomVoie"
+												th:value="${voie.nomVoie}" /> <span class="red"
+												th:errors="${voie.nomVoie}"></span>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Description de la Voie :</label>
+											<input class="form-control" type="text"
+												name="descriptionVoie" th:value="${voie.descriptionVoie}" />
+											<span class="red" th:errors="${voie.descriptionVoie}"></span>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Difficulté de la Voie :</label>
+											<input class="form-control" type="text" name="niveauVoie"
+												th:value="${voie.niveauVoie}" /> <span class="red"
+												th:errors="${voie.niveauVoie}"></span>
+										</div>
+										<div>
+											<button type="submit" class="btn btn-danger">Enregistrer</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </body>
 </html>

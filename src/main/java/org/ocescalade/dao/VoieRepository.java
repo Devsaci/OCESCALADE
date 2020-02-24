@@ -13,6 +13,6 @@ public interface VoieRepository extends JpaRepository<Voie, Integer> {
 	
 	@Query ("SELECT e FROM Voie e WHERE e.nomVoie LIKE :x" )
     List<Voie> chercheVoie(@Param("x")String nom);
-	List<Voie> findVoiesBySecteurSpotIdSpot(Integer sid);
+	List<Voie> findVoiesBySecteurSpotId(Integer sid);
 
 }
