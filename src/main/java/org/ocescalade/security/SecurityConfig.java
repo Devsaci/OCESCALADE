@@ -27,11 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 		 BCryptPasswordEncoder bcpe = getBCPE();
 		 System.out.println("code 1234"+bcpe.encode("1234"));
-		 System.out.println("code 1111"+bcpe.encode("1111"));
-		 System.out.println("code 2222"+bcpe.encode("2222"));
-		 System.out.println("code 3333"+bcpe.encode("3333"));
-
-
+	
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("SELECT username as principal, password as credentials,"
 						+ " enabled FROM user WHERE username=?")
@@ -48,6 +44,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/login");
 		http.authorizeRequests().antMatchers("/").hasAnyRole("USER", "ADMIN");
 		http.authorizeRequests().antMatchers("/Accueil").hasAnyRole("USER", "ADMIN");
+        http.authorizeRequests().antMatchers("/ListeSites").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/Site").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/NewSpot").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/Topo").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/Profil").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/saveSite").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/saveSecteur").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/saveVoie").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/saveTopo").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/topoPret").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/acceptPret").hasAnyRole("USER","ADMIN");
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 	}
 
 	@Bean

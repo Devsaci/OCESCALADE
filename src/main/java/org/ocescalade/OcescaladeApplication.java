@@ -110,17 +110,20 @@ public class OcescaladeApplication implements CommandLineRunner {
 
 
 		Topo tp1 = topoRepository.save(new Topo("EVEREST",
-		"Topo1 Description. ","Jimbo",false,u2));
-		Topo tp2 = topoRepository.save(new Topo("Le K2",
-		"Topo2 Description.","Martin",false,u1));
-		Topo tp3 = topoRepository.save(new Topo("KANGCHENJUNGA",
-		"Topo3 Description.","Luck",false,u1));
-		Topo tp4 = topoRepository.save(new Topo("Tassili n'Ajjer",
-		"Topo4 Description ","Jimbo",false,u3));
-
-
-
+		"Topo1 Description.","",false,u2));
 		
+		Topo tp2 = topoRepository.save(new Topo("Le K2",
+		"Topo2 Description.","",false,u1));
+		
+		Topo tp3 = topoRepository.save(new Topo("KANGCHENJUNGA",
+		"Topo3 Description.","",false,u1));
+		
+		Topo tp4 = topoRepository.save(new Topo("Tassili n'Ajjer",
+		"Topo4 Description ","",false,u3));
+		
+
+
+	
 	}
 
 }

@@ -26,7 +26,6 @@ public class Topo implements Serializable {
 	@NotNull
 	@Size(min = 3, max = 500)
 	private String descriptionTopo;
-	private String nomProprietaire;
 	private Boolean isLoan;
 	@ManyToOne
 	private User user;
@@ -43,7 +42,6 @@ public class Topo implements Serializable {
 		super();
 		this.nomTopo = nomTopo;
 		this.descriptionTopo = descriptionTopo;
-		this.nomProprietaire = nomProprietaire;
 		this.isLoan = isLoan;
 		this.user = user;
 	}
@@ -70,14 +68,6 @@ public class Topo implements Serializable {
 
 	public void setDescriptionTopo(String descriptionTopo) {
 		this.descriptionTopo = descriptionTopo;
-	}
-
-	public String getNomProprietaire() {
-		return nomProprietaire;
-	}
-
-	public void setNomProprietaire(String nomProprietaire) {
-		this.nomProprietaire = nomProprietaire;
 	}
 
 	public Boolean getLoan() {

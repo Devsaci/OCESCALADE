@@ -80,7 +80,6 @@ public class ProfilController {
 		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot(username, "refuse",
 				"termine");
 		model.addAttribute("listNoEmprunt", listnoemprunt);
-		topo.setNomProprietaire(username);
 		topo.setLoan(false);
 		topo.setUser(user);
 		if (bindingResult.hasErrors())

@@ -10,6 +10,7 @@ import org.ocescalade.dao.UserRepository;
 import org.ocescalade.entities.Pret;
 import org.ocescalade.entities.Topo;
 import org.ocescalade.entities.User;
+import org.ocescalade.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,17 +27,18 @@ public class TopoController {
 	@Autowired
 	private PretRepository pretRepository;
 	@Autowired
-	private UserRepository userRepsitory;
+	private UserService userService;
 
+	
 	@RequestMapping(value = "/Topo")
 	public String Topo(Model model) {
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();		
-		User userConnected=userRepsitory.findUserByUsername(username);
+		User userConnected = this.userService.connectedUser();
 		List<Topo> listopo = topoRepository.findByUser_IdIsNot(userConnected.getId());
 		model.addAttribute("topo", listopo);
 		return "Topo";
 	}
 
+	
 	@RequestMapping(value = "/topoPret")
 	public String affPretTopo(@RequestParam(name = "id", defaultValue = "") Integer idt, 
 			Model model) {
@@ -44,22 +46,19 @@ public class TopoController {
 		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
 		model.addAttribute("pret", new Pret());
-		//System.out.println("topo = /////////////TOPO///////////// " + topo);
+		System.out.println("topo = /////////////TOPO///////////// " + topo);
 		return "topoPret";
 	}
 
+	
 	@RequestMapping(value = "/savePret", method = RequestMethod.POST)
 	public String savePret(@RequestParam(name = "id", defaultValue = "") Integer idt, 
 			@Valid Pret pret,
 			BindingResult bindingResult, 
 			Model model) {
-		//System.out.println("idt = idt " + idt);
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
-		//System.out.println("topo =**************TOPO************" + topo);
-		pret.setEmprunteur(username);
-		pret.setProprietaire(topo.getNomProprietaire());
+		pret.setEmprunteur(this.userService.connectedUsername());
 		pret.setNomDuTopo(topo.getNomTopo());
 		pret.setStatut("en attente");
 		pret.setTopo(topo);
@@ -69,8 +68,5 @@ public class TopoController {
 		model.addAttribute("pret", pret);
 		return "ConfirmPret";
 	}
-	
-	
-	
 	
 }
