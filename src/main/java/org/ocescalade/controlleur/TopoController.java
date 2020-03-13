@@ -10,7 +10,7 @@ import org.ocescalade.dao.UserRepository;
 import org.ocescalade.entities.Pret;
 import org.ocescalade.entities.Topo;
 import org.ocescalade.entities.User;
-import org.ocescalade.service.UserService;
+import org.ocescalade.service.IuserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class TopoController {
 	@Autowired
 	private PretRepository pretRepository;
 	@Autowired
-	private UserService userService;
+	private IuserService userService;
 
 	
 	@RequestMapping(value = "/Topo")

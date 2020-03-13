@@ -27,6 +27,8 @@ public class User implements Serializable {
 	private Boolean enabled;
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private Collection<Topo> topos;
+	
+	
 
 	public User() {
 		super();
@@ -90,5 +92,14 @@ public class User implements Serializable {
 	public void setTopos(Collection<Topo> topos) {
 		this.topos = topos;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", enabled="
+				+ enabled + ", topos=" + topos + "]";
+	}
+	
+	
+	
 
 }

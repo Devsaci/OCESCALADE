@@ -8,6 +8,7 @@ import org.ocescalade.dao.PretRepository;
 import org.ocescalade.dao.TopoRepository;
 import org.ocescalade.dao.UserRepository;
 import org.ocescalade.entities.User;
+import org.ocescalade.service.IuserService;
 import org.ocescalade.entities.Pret;
 import org.ocescalade.entities.Topo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfilController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private  IuserService IuserService;  //UserRepository userRepository;
 	@Autowired
 	private TopoRepository topoRepository;
 	@Autowired
@@ -31,26 +32,35 @@ public class ProfilController {
 
 	@RequestMapping(value = "/Profil")
 	public String Profil(Model model) {
+		
 		/*      */
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		User user = userRepository.findUserByUsername(username);
-		model.addAttribute("user", user);
+		//String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		//User user = userRepository.findUserByUsername(username);	
+		
+		User userConnected = this.IuserService.connectedUser();
+		System.out.println("/////////////////////"+ userConnected);
+		model.addAttribute("user", userConnected);
 		/*      */
-		List<Topo> listTopos = topoRepository.findTopoByUser_Username(username);
+		List<Topo> listTopos = topoRepository.findTopoByUser_Id(userConnected.getId());
+		System.out.println("listopo  = "+ listTopos );
 		model.addAttribute("listopo", listTopos);
 		model.addAttribute("topo", new Topo());
 		/*      */
-		List<Pret> lpe = pretRepository.findAllByEmprunteur(username);
+		List<Pret> lpe = pretRepository.findAllByEmprunteur(this.IuserService.connectedUsername());
+		System.out.println("listPretEmprunteur"+ lpe);
 		model.addAttribute("listPretEmprunteur", lpe);
-		List<Pret> lpp = pretRepository.findAllByProprietaire(username);
+		List<Pret> lpp = pretRepository.findAllByProprietaire(this.IuserService.connectedUsername());
+		System.out.println("listPretProprio"+ lpp);
 		model.addAttribute("listPretProprio", lpp);
 
 		List<Pret> listnopret = pretRepository.findPretsByProprietaireAndStatutIsNotAndStatutIsNot
-				(username, "refuse","termine");
+				(this.IuserService.connectedUsername(), "refuse","termine");
+		System.out.println("listNoPret"+ listnopret);
 		model.addAttribute("listNoPret", listnopret);
 
 		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot
-				(username, "refuse","termine");
+				(this.IuserService.connectedUsername(), "refuse","termine");
+		System.out.println("listNoEmprunt"+ listnoemprunt);
 		model.addAttribute("listNoEmprunt", listnoemprunt);
 
 		return "Profil";
@@ -62,26 +72,30 @@ public class ProfilController {
 							BindingResult bindingResult, 
 							Model model) {
 	
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		List<Topo> lisTopos = topoRepository.findToposByUser_Username(username);
+		//String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		User userConnected = this.IuserService.connectedUser();
+		model.addAttribute("user", userConnected);
+		
+		List<Topo> lisTopos = topoRepository.findToposByUser_Id(userConnected);
 		model.addAttribute("listopo", lisTopos);
-		
-		
-		User user = userRepository.findUserByUsername(username);
-		model.addAttribute("user", user);
-		
-		List<Pret> lpe = pretRepository.findAllByEmprunteur(username);
+				
+		List<Pret> lpe = pretRepository.findAllByEmprunteur(userConnected);
 		model.addAttribute("listPretEmprunteur", lpe);
-		List<Pret> lpp = pretRepository.findAllByProprietaire(username);
+		
+		List<Pret> lpp = pretRepository.findAllByProprietaire(userConnected);
 		model.addAttribute("listPretProprio", lpp);
-		List<Pret> listnopret = pretRepository.findPretsByProprietaireAndStatutIsNotAndStatutIsNot(username, "refuse",
+		
+		
+		List<Pret> listnopret = pretRepository
+				.findPretsByProprietaireAndStatutIsNotAndStatutIsNot(userConnected, "refuse",
 				"termine");
 		model.addAttribute("listNoPret", listnopret);
-		List<Pret> listnoemprunt = pretRepository.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot(username, "refuse",
+		List<Pret> listnoemprunt = pretRepository
+				.findPretsByEmprunteurAndStatutIsNotAndStatutIsNot(userConnected, "refuse",
 				"termine");
 		model.addAttribute("listNoEmprunt", listnoemprunt);
 		topo.setLoan(false);
-		topo.setUser(user);
+		//topo.setUser(user);
 		if (bindingResult.hasErrors())
 			return "Profil";
 		topoRepository.save(topo);
