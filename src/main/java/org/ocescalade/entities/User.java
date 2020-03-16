@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,13 +29,16 @@ public class User implements Serializable {
 	private Boolean enabled;
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private Collection<Topo> topos;
-	
-	
+	/*   */
+	@OneToMany(mappedBy = "userEmprunteur", fetch = FetchType.LAZY)
+	private Collection<Pret> prets;
 
+	/*   */
 	public User() {
 		super();
 	}
 
+	/*   */
 	public User(int id, @NotNull @Size(min = 4, max = 50) String username,
 			@NotNull @Size(min = 4, max = 250) String password, String role, Boolean enabled, Collection<Topo> topos) {
 		super();
@@ -45,6 +50,7 @@ public class User implements Serializable {
 		this.topos = topos;
 	}
 
+	/*   */
 	public int getId() {
 		return id;
 	}
@@ -98,8 +104,5 @@ public class User implements Serializable {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", enabled="
 				+ enabled + ", topos=" + topos + "]";
 	}
-	
-	
-	
 
 }

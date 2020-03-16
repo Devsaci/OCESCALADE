@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
@@ -21,10 +22,7 @@ public class Pret implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
-	private String emprunteur;
-	private String proprietaire;
-	private String nomDuTopo;
+	private int Id;	
 	@NotNull
 	@Future(message = "Cette date est passée.")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -36,51 +34,34 @@ public class Pret implements Serializable {
 	private String statut;
 	@ManyToOne
 	@JoinColumn(name = "topoPret")
-	private Topo topo;
-	
-	
-
+	private Topo topo;	
+	@ManyToOne
+//  @JoinColumn(name = "userEmprunteur")
+	private User userEmprunteur;
+//	@OneToMany
+//	@JoinColumn(name = "userProprietaire")
+//	private User userProprietaire;
+	/*        */
 	public Pret() {
 		super();
 	}
-
-	public Pret(String emprunteur, String proprietaire, String nomDuTopo,
-			@NotNull @Future(message = "Cette date est passée.") Date debutPret,
-			@NotNull @Future(message = "Cette date est passée.") Date finPret, String statut, Topo topo) {
+	/*         */ 
+	public Pret(int id, @NotNull @Future(message = "Cette date est passée.") Date debutPret,
+			@NotNull @Future(message = "Cette date est passée.") Date finPret, String statut, Topo topo,
+			User userEmprunteur) {
 		super();
-		this.emprunteur = emprunteur;
-		this.proprietaire = proprietaire;
-		this.nomDuTopo = nomDuTopo;
+		Id = id;
 		this.debutPret = debutPret;
 		this.finPret = finPret;
 		this.statut = statut;
-		this.topo = topo;
+		this.topo = topo;	
+		this.userEmprunteur = userEmprunteur;
 	}
-	
-	
-	public Integer getId() {
+	public int getId() {
 		return Id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		Id = id;
-	}
-	public String getEmprunteur() {
-		return emprunteur;
-	}
-	public void setEmprunteur(String emprunteur) {
-		this.emprunteur = emprunteur;
-	}
-	public String getProprietaire() {
-		return proprietaire;
-	}
-	public void setProprietaire(String proprietaire) {
-		this.proprietaire = proprietaire;
-	}
-	public String getNomDuTopo() {
-		return nomDuTopo;
-	}
-	public void setNomDuTopo(String nomDuTopo) {
-		this.nomDuTopo = nomDuTopo;
 	}
 	public Date getDebutPret() {
 		return debutPret;
@@ -108,7 +89,12 @@ public class Pret implements Serializable {
 	}
 	
 	
-	
+	public User getUserEmprunteur() {
+		return userEmprunteur;
+	}
+	public void setUserEmprunteur(User userEmprunteur) {
+		this.userEmprunteur = userEmprunteur;
+	}
 	
 	
 

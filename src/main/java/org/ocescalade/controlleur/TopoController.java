@@ -6,13 +6,11 @@ import javax.validation.Valid;
 
 import org.ocescalade.dao.PretRepository;
 import org.ocescalade.dao.TopoRepository;
-import org.ocescalade.dao.UserRepository;
 import org.ocescalade.entities.Pret;
 import org.ocescalade.entities.Topo;
 import org.ocescalade.entities.User;
 import org.ocescalade.service.IuserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -58,8 +56,8 @@ public class TopoController {
 			Model model) {
 		Topo topo = topoRepository.findToposByIdIs(idt);
 		model.addAttribute("topo", topo);
-		pret.setEmprunteur(this.userService.connectedUsername());
-		pret.setNomDuTopo(topo.getNomTopo());
+		pret.setUserEmprunteur(this.userService.connectedUser());
+		//pret.setNomDuTopo(topo.getNomTopo());
 		pret.setStatut("en attente");
 		pret.setTopo(topo);
 		if (bindingResult.hasErrors())

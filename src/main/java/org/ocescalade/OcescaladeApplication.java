@@ -39,7 +39,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-/*
+
 
 		User u1 = userRepository.save(new User(1,"Jimbo","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","ADMIN",true,null));
 		User u2 = userRepository.save(new User(2,"Elorna","$2a$10$h4kMaB/.lj6YzdVCs8sOaOgiNbifXtS5srfmLQhNbs0hn5iEns8re","USER",true,null));
@@ -121,7 +121,7 @@ public class OcescaladeApplication implements CommandLineRunner {
 		Topo tp4 = topoRepository.save(new Topo("Tassili n'Ajjer",
 		"Topo4 Description ","",false,u3));
 		
-*/
+
 
 	
 	}
